@@ -8,7 +8,7 @@ import NotFoundPage from "./NotFoundPage";
 const MainRoute = () => {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
+      <Route path="/" element={<Signup />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="*" element={<NotFoundPage />} />

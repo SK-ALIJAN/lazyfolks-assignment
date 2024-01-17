@@ -29,8 +29,6 @@ const NotFoundContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #080710;
-  color: #fff;
   text-align: center;
 `;
 

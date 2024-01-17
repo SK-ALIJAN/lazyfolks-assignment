@@ -1,0 +1,73 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    position: sticky;
+    top: 0;
+    background-color: white;
+
+}
+
+.header {
+    font-size: larger;
+    font-weight: 600;
+    text-decoration: none;
+    color: black;
+}
+
+.allLinks {
+    display: flex;
+    gap: 1rem;
+}
+
+.allLinks a {
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+
+}
+
+.allLinks a:hover {
+    border-bottom: 3px solid black;
+}
+
+.isActive {
+    border-bottom: 3px solid black;
+}
+
+.hamburger {
+    display: none;
+    font-size: larger;
+    cursor: pointer;
+}
+
+.cross {
+    display: none;
+    font-size: xx-large;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+@media screen and (max-width:900px) {
+    .hamburger {
+        display: block;
+    }
+
+    .cross {
+        display: block;
+    }
+
+    .allLinks {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        height: 100dvh;
+        background-color: white;
+        right: 1px;
+        top: 1px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        width: 4;
+        z-index: 4 !important;
+        padding: 2rem;
+    }
+}

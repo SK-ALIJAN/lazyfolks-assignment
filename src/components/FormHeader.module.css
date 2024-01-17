@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.container>header {
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.icons img {
+    border: 1px solid rgba(128, 128, 128, 0.333);
+    padding: 0.5rem 3rem;
+    border-radius: 11px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+
+.icons img:active {
+    transform: scale(1.1);
+}
+
+.lines {
+    display: flex;
+    justify-self: center;
+    gap: 10px;
+    margin: auto;
+    margin-bottom: 1rem;    font-size: 13px;
+}
+
+.lines>div {
+    width: 5.5rem;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.333);
+    position: relative;
+    bottom: 10px;
+
+}
