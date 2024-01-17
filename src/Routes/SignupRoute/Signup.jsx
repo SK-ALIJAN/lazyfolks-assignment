@@ -8,7 +8,9 @@ import "react-toastify/dist/ReactToastify.css";
 import HelmetForSeo from "../../components/HelmetForSeo";
 import { FaLock, FaLockOpen } from "react-icons/fa6";
 import SignupFormHeader from "../../components/signup/SignupFormHeader";
-import styles from "./Signup.module.css";
+import styles from "./Authentication.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { SignupToServer } from "../../Redux/action";
 
 const initialValues = {
   phone: "",
@@ -22,11 +24,18 @@ let des = "this is a Signup page";
 const Signup = () => {
   let navigate = useNavigate();
   let [passwordShow, setPasswordShow] = useState(false);
+  let dispatch = useDispatch();
+
+  let { isLoading, isError, errorMessage } = useSelector((store) => {
+    return store.signupReducer;
+  });
+
   let { values, errors, handleBlur, handleChange, handleSubmit, touched } =
     useFormik({
       initialValues: initialValues,
       validationSchema: signupSchema,
       onSubmit: (values, action) => {
+        dispatch(SignupToServer(values));
         action.resetForm();
       },
     });
@@ -35,6 +44,12 @@ const Signup = () => {
     setPasswordShow(!passwordShow);
   };
 
+  useEffect(() => {
+    if (isError) {
+      toast.warn(errorMessage);
+    }
+  }, [isError]);
+
   return (
     <div className={styles.container}>
       <HelmetForSeo title={title} des={des} />
@@ -42,7 +57,7 @@ const Signup = () => {
       <form onSubmit={handleSubmit} className={styles.formContainer}>
         <div>
           <input
-            type="text"
+            type="number"
             placeholder="Phone"
             name="phone"
             onChange={handleChange}
@@ -100,7 +115,9 @@ const Signup = () => {
           )}
         </div>
 
-        <button type="submit">Continue</button>
+        <button type="submit" disabled={isLoading}>
+          {isLoading ? "Please wait ..." : " Continue"}
+        </button>
 
         <p className={styles.links}>
           Got an account? <Link to={"/login"}>Sign in</Link>
@@ -108,6 +125,8 @@ const Signup = () => {
       </form>
 
       <ToastContainer />
+
+      {isLoading && <div className={styles.loading}></div>}
     </div>
   );
 };

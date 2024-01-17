@@ -69,3 +69,26 @@
     text-decoration: none;
     color: #e99145
 }
+
+.loading {
+    width: 4rem;
+    height: 4rem;
+    border: 4px solid grey;
+    border-radius: 100%;
+    border-bottom: 4px solid black;
+    animation: ratate .4s ease-in-out infinite;
+    position: fixed;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%);
+}
+
+@keyframes ratate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -7,7 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import HelmetForSeo from "../../components/HelmetForSeo";
 import LoginFormHeader from "../../components/login/LoginFormHeader";
-import styles from "../SignupRoute/Signup.module.css";
+import styles from "../SignupRoute/Authentication.module.css";
 
 const initialValues = {
   email: "",
