@@ -6,6 +6,7 @@ import { loginSchema } from "./LoginFormValidation";
 import { FiAlertCircle } from "react-icons/fi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from "react-helmet";
 
 const initialValues = {
   email: "",
@@ -26,7 +27,11 @@ const Login = () => {
     });
 
   return (
-    <div>
+    <React.Fragment>
+
+    <Helmet>
+       
+    </Helmet>
       <Background>
         <Shape></Shape>
         <Shape></Shape>
@@ -81,7 +86,7 @@ const Login = () => {
       </Form>
 
       <ToastContainer />
-    </div>
+    </React.Fragment>
   );
 };
 

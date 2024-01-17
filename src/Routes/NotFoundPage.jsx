@@ -1,14 +1,15 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+
 import styled from "styled-components";
+import HelmetForSeo from "../components/HelmetForSeo";
+
+let title = "Opps! 404";
+let des = "this is a not found page ";
 
 const NotFoundPage = () => {
   return (
     <React.Fragment>
-      <Helmet>
-        <title>Opps! 404</title>
-        <meta name="description" content="page not found" />
-      </Helmet>
+      <HelmetForSeo title={title} des={des} />
       <NotFoundContainer>
         <div>
           <NotFoundText>404 - Not Found</NotFoundText>
