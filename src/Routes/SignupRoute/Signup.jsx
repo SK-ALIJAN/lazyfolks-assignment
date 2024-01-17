@@ -6,6 +6,7 @@ import { signupSchema } from "./SignupFormValidation";
 import { FiAlertCircle } from "react-icons/fi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import HelmetForSeo from "../../components/HelmetForSeo";
 
 const initialValues = {
   name: "",
@@ -13,6 +14,9 @@ const initialValues = {
   password1: "",
   password2: "",
 };
+
+let title = "Signup Page";
+let des = "this is a Signup page";
 
 const Signup = () => {
   let navigate = useNavigate();
@@ -28,7 +32,8 @@ const Signup = () => {
   useEffect(() => {}, []);
 
   return (
-    <div>
+    <>
+      <HelmetForSeo title={title} des={des} />
       <Background>
         <Shape></Shape>
         <Shape></Shape>
@@ -109,7 +114,7 @@ const Signup = () => {
       </Form>
 
       <ToastContainer />
-    </div>
+    </>
   );
 };
 
@@ -206,9 +211,10 @@ const Input = styled.input`
   font-weight: 600;
   outline: 0;
   border: 1px solid grey;
+  color: black;
 
   &:focus {
-    border: 2px solid white;
+    border: 0;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
       rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
   }

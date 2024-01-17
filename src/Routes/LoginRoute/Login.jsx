@@ -6,12 +6,15 @@ import { loginSchema } from "./LoginFormValidation";
 import { FiAlertCircle } from "react-icons/fi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Helmet } from "react-helmet";
+import HelmetForSeo from "../../components/HelmetForSeo";
 
 const initialValues = {
   email: "",
   password: "",
 };
+
+let title = "Login Page";
+let des = "this is a login page";
 
 const Login = () => {
   let [passwordShow, setPassword] = useState(false);
@@ -28,10 +31,7 @@ const Login = () => {
 
   return (
     <React.Fragment>
-
-    <Helmet>
-       
-    </Helmet>
+      <HelmetForSeo title={title} des={des} />
       <Background>
         <Shape></Shape>
         <Shape></Shape>
