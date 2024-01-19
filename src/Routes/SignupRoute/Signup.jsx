@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { signupSchema } from "./SignupFormValidation";
@@ -9,8 +9,7 @@ import HelmetForSeo from "../../components/HelmetForSeo";
 import { FaLock, FaLockOpen } from "react-icons/fa6";
 import SignupFormHeader from "../../components/signup/SignupFormHeader";
 import styles from "./Authentication.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { SignupToServer } from "../../Redux/action";
+import { useContextApi } from "../../ContextApi";
 
 const initialValues = {
   phone: "",
@@ -24,18 +23,17 @@ let des = "this is a Signup page";
 const Signup = () => {
   let navigate = useNavigate();
   let [passwordShow, setPasswordShow] = useState(false);
-  let dispatch = useDispatch();
-
-  let { isLoading, isError, errorMessage } = useSelector((store) => {
-    return store.signupReducer;
-  });
+  let { signup, SignupToServer } = useContextApi();
+  let { isLoading, isError, errorMessage } = signup;
+  let errorRef = useRef(false);
 
   let { values, errors, handleBlur, handleChange, handleSubmit, touched } =
     useFormik({
       initialValues: initialValues,
       validationSchema: signupSchema,
       onSubmit: (values, action) => {
-        dispatch(SignupToServer(values));
+        errorRef.current = false;
+        SignupToServer(values);
         action.resetForm();
       },
     });
@@ -45,8 +43,9 @@ const Signup = () => {
   };
 
   useEffect(() => {
-    if (isError) {
+    if (isError && errorRef.current == false) {
       toast.warn(errorMessage);
+      errorRef.current = true;
     }
   }, [isError]);
 
